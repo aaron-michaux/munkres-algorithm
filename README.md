@@ -1,7 +1,7 @@
 
 # Munkres (Hungarian) Algorithm
 
-Modern <header-only> C++ implementation of Munkres (Hungarian) algorithm.
+Modern <header-only> C++ implementation of the Munkres (Hungarian) algorithm.
 
 ### Reference
 

@@ -11,7 +11,7 @@ There's an excellent discussion of the Munkres Algorithm at [topcoder.com](https
 
 ### Requirements
 
- * C++17 compatible compiler
+ * A [C++17 compatible](https://en.cppreference.com/w/cpp/compiler_support) compiler
  * [GNU Make](https://www.gnu.org/software/make/) (To build and run examples.)
  
 ### Testcases

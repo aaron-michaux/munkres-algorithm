@@ -11,9 +11,9 @@ There's an excellent discussion of the Munkres Algorithm at [topcoder.com](https
 
 ### Requirements
 
- * A [C++17 compatible](https://en.cppreference.com/w/cpp/compiler_support) compiler
+ * A [C++14 or C++17 compatible](https://en.cppreference.com/w/cpp/compiler_support) compiler
  * [GNU Make](https://www.gnu.org/software/make/) (To build and run examples.)
- 
+
 ### Testcases
 
 Tested on Ubuntu 18.04, with [Clang 6.0](http://releases.llvm.org/6.0.1/tools/clang/docs/ReleaseNotes.html) and [gcc 7.3.0](https://www.gnu.org/software/gcc/gcc-7/). Should work without issue on [Visual Studio](https://visualstudio.microsoft.com/), or any other compiler with [C++17 support](https://en.cppreference.com/w/cpp/compiler_support).

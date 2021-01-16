@@ -4,6 +4,7 @@
 // @see Tutorial on Implementation of Munkres' Assignment Algorithm
 //      Robert Pilgram, Murray State University
 
+#include <algorithm>
 #include <cassert>
 #include <cmath>
 #include <functional>
@@ -69,12 +70,10 @@ template<typename T> struct MunkresData
       std::fill(begin(col_mask), end(col_mask), false);
 
       { // ensure evey element is finite
-         auto ii = std::find_if(cbegin(data), cend(data), [](auto x) {
-            return !std::isfinite(x);
-         });
+         auto ii = std::find_if(
+             cbegin(data), cend(data), [](auto x) { return !std::isfinite(x); });
          if(ii != cend(data)) {
-            std::cerr << "precondition failed: non-finite edge cost"
-                      << std::endl;
+            std::cerr << "precondition failed: non-finite edge cost" << std::endl;
             assert(false);
          }
       }
@@ -88,10 +87,7 @@ template<typename T> struct MunkresData
 
    // Marks
    MunkresState& M(int r, int c) noexcept { return marks[r * side_ + c]; }
-   const MunkresState& M(int r, int c) const noexcept
-   {
-      return marks[r * side_ + c];
-   }
+   const MunkresState& M(int r, int c) const noexcept { return marks[r * side_ + c]; }
 
    void cover_row(int r) noexcept { row_mask[r] = true; }
    void cover_col(int c) noexcept { col_mask[c] = true; }
@@ -241,7 +237,7 @@ template<typename T> struct MunkresData
             r = find_star_in_col(c); // STARed zero in column of PRIMEd back()
             if(r >= 0)
                seq.push_back({r, c}); // Push a STAR edge
-            else // If it doesn't exist, then the path is done
+            else                      // If it doesn't exist, then the path is done
                break;
             c = find_prime_in_row(r);
             seq.push_back({r, c}); // Push a PRIME edge

@@ -142,7 +142,7 @@ template<typename T> struct MunkresData
       for(auto r = 0u; r < side(); ++r) {
          if(r_mask[r]) continue;
          for(auto c = 0u; c < side(); ++c) {
-            if(r_mask[r] or c_mask[c]) continue;
+            if(r_mask[r] || c_mask[c]) continue;
             if(C(r, c) == zero) {
                M(r, c)   = STAR;
                r_mask[r] = true;

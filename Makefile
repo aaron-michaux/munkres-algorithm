@@ -1,8 +1,8 @@
 
 TEST_SRCS:=example.cpp
 
-CC=clang
-CPP_FLAGS:=-std=c++17 -I$(CURDIR) -Wall -Wextra -pedantic -Werror -fsanitize=address
+CC=gcc
+CPP_FLAGS:=-std=c++14 -I$(CURDIR) -Wall -Wextra -pedantic -Werror -fsanitize=address
 LINK_FLAGS:=-fsanitize=address -lm -lstdc++
 
 OBJDIR:=build

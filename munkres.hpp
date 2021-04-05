@@ -11,6 +11,7 @@
 #include <iostream>
 #include <limits>
 #include <vector>
+#include <algorithm>
 
 namespace detail
 {
@@ -141,7 +142,7 @@ template<typename T> struct MunkresData
       for(auto r = 0u; r < side(); ++r) {
          if(r_mask[r]) continue;
          for(auto c = 0u; c < side(); ++c) {
-            if(r_mask[r] or c_mask[c]) continue;
+            if(r_mask[r] || c_mask[c]) continue;
             if(C(r, c) == zero) {
                M(r, c)   = STAR;
                r_mask[r] = true;
@@ -195,19 +196,19 @@ template<typename T> struct MunkresData
       if(find_uncovered_row_col(saved_row, saved_col))
          M(saved_row, saved_col) = PRIME;
       else
-         return {5, saved_row, saved_col}; // all zeros covered
+         return std::tuple<int, unsigned, unsigned>{5, saved_row, saved_col}; // all zeros covered
 
       // If there's a STAR in the PRIMEd row, then:
       for(auto c = 0u; c < side(); ++c) {
          if(M(saved_row, c) == STAR) {
             cover_row(saved_row);             // cover that row
             uncover_col(c);                   // uncover the column
-            return {3, saved_row, saved_col}; // and repeat this step
+            return std::tuple<int, unsigned, unsigned>{3, saved_row, saved_col}; // and repeat this step
          }
       }
 
       // There's no STAR in the PRIMEd row, onto "augmenting path"
-      return {4, saved_row, saved_col};
+      return std::tuple<int, unsigned, unsigned>{4, saved_row, saved_col};
    }
 
    // ------------------------------------------------------------------- Step 4
